@@ -1,0 +1,56 @@
+.menuHeader{
+    width: 100%;
+    height: 40px;
+    background: #fff;
+    border-bottom: 1px solid #cecece;
+    box-shadow: 0 2px 2px -2px #333;
+}
+.menuHeader ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menuHeader > ul{
+    display: flex;
+    margin: 0 50px;
+    position: relative;
+}
+.menuHeader > ul > li > span{
+    display: block;
+    line-height: 40px;
+    cursor: pointer;
+    padding: 0 20px;
+    font-size: 14px;
+}
+.menuHeader > ul > li > span:hover{
+    color: #2874f0;
+}
+.menuHeader > ul > li > ul{
+    position: absolute;
+    background: #fff;
+    left: 0;
+    right: 0;
+    display: none;
+    border: 1px solid #cecece;
+}
+.menuHeader > ul > li:hover ul{
+    display: block;
+}
+.menuHeader > ul > li > ul > li{
+    margin: 0 20px;
+    min-width: 150px;
+}
+.menuHeader > ul > li > ul > li{
+    float: left;
+}
+.menuHeader > ul > li > ul > li > a{
+    font-weight: bold;
+    display: block;
+}
+.menuHeader > ul > li > ul > li a{
+    padding: 3px 0;
+    display: block;
+    font-size: 12px;
+    text-decoration: none;
+    color: #707070;
+}
