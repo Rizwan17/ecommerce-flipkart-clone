@@ -32,6 +32,7 @@
     right: 0;
     display: none;
     border: 1px solid #cecece;
+    z-index: 1;
 }
 .menuHeader > ul > li:hover ul{
     display: block;
