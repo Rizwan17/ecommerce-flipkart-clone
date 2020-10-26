@@ -9,6 +9,8 @@ import {
   MaterialButton,
   DropdownMenu
 } from '../MaterialUI';
+import { useDispatch } from 'react-redux';
+import { login } from '../../actions';
 
 /**
 * @author
@@ -20,6 +22,11 @@ const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+
+  const userLogin = () => {
+    dispatch(login({ email, password }));
+  }
   
 
   return (
@@ -49,13 +56,30 @@ const Header = (props) => {
                   label="Enter Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  rightElement={<a href="#">Forgot?</a>}
+                  // rightElement={<a href="#">Forgot?</a>}
                 />
+                
                 <MaterialButton 
                   title="Login"
                   bgColor="#fb641b"
                   textColor="#ffffff"
+                  style={{
+                    margin: '40px 0 20px 0'
+                  }}
+                  onClick={userLogin}
                 />
+
+                <p>OR</p>
+
+                <MaterialButton 
+                  title="Request OTP"
+                  bgColor="#ffffff"
+                  textColor="#2874f0"
+                  style={{
+                    margin: '20px 0'
+                  }}
+                />
+                
 
               
 
@@ -64,6 +88,7 @@ const Header = (props) => {
         </div>
       </Modal>
       <div className="subHeader">
+        {/* Logo  */}
         <div className="logo">
           <a href="">
             <img src={flipkartLogo} className="logoimage" alt="" />
@@ -74,6 +99,9 @@ const Header = (props) => {
             <img src={goldenStar} className="goldenStar" alt="" />
           </a>
         </div>
+        {/* logo ends here */}
+
+        {/* search component */}
         <div style={{
           padding: '0 10px'
         }}>
@@ -90,6 +118,9 @@ const Header = (props) => {
 
           </div>
         </div>
+        {/* search component ends here */}
+
+        {/* right side menu */}
         <div className="rightMenu">
           <DropdownMenu
             menu={
@@ -134,6 +165,7 @@ const Header = (props) => {
             </a>
           </div>
         </div>
+        {/* right side menu ends here */}
 
       </div>
     </div>
