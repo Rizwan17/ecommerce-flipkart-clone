@@ -1,15 +1,3 @@
-.card{
-    width: calc(100% - 20px);
-    margin: 10px 10px;
-    border: 1px solid #cecece;
-    box-shadow: 0 0 2px -2px gray;
-}
-.cardHeader{
-    display: flex;
-    justify-content: space-between;
-    padding: 20px 20px;
-    border-bottom: 1px solid #cecece;
-}
 .productContainer{
     width: 200px;
     margin: 0 10px;
