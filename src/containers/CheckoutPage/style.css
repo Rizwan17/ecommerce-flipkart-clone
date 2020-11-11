@@ -1,0 +1,54 @@
+.checkoutContainer{
+    width: calc(100% - 400px);
+}
+.checkoutStep{
+    box-sizing: border-box;
+    background: #fff;
+    box-shadow: 0 1px 1px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+.checkoutHeader{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 20px;
+}
+.checkoutHeader.active{
+    background: #2874f0;
+}
+.checkoutHeader .stepNumber{
+    display: inline-block;
+    text-align: center;
+    background: #eee;
+    color: #2874f0;
+    border-radius: 3px;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 3px 7px;
+}
+.checkoutHeader.active .stepNumber{
+    background: #fff;
+}
+.stepTitle{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #878787;
+    margin-left: 15px;
+}
+.checkoutHeader.active .stepTitle{
+    color: #fff;
+}
+.loggedInId{
+    font-size: 12px;
+    margin: 0px 0 10px 60px;
+}
+
+.addressContainer{
+    box-sizing: border-box;
+    padding: 20px;
+}
+.addressinfo{
+    padding-left: 15px;
+    box-sizing: border-box;
+    width: 100%;
+}

@@ -1,8 +1,7 @@
 .card{
     width: 100%;
     background: #fff;
-    border: 1px solid #cecece;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 2px 0px !important;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 1px 0px !important;
 }
 .cardHeader{
     display: flex;

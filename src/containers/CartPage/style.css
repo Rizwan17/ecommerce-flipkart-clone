@@ -1,5 +1,6 @@
 .cartContainer{
     display: flex;
     max-width: 1260px;
-    margin: 0 auto;
+    margin: 15px auto;
+    justify-content: space-between;
 }

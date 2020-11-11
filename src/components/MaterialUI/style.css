@@ -31,7 +31,8 @@
 
 /* Material Input */
 .materialInput{
-    width: 90%;
+    width: 100%;
+    min-width: 300px;
     height: 30px;
     border-bottom: 2px solid #2874f0;
     position: relative;
