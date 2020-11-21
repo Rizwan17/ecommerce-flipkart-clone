@@ -53,3 +53,30 @@ export const addAddress = (payload) => {
     }
   };
 };
+
+export const addOrder = (payload) => {
+  return async (dispatch) => {
+    try {
+      const res = await axios.post(`/addOrder`, payload);
+      dispatch({ type: userConstants.ADD_USER_ORDER_REQUEST });
+      if (res.status === 201) {
+        console.log(res);
+        // const {
+        //   address: { address },
+        // } = res.data;
+        // dispatch({
+        //   type: userConstants.ADD_USER_ADDRESS_SUCCESS,
+        //   payload: { address },
+        // });
+      } else {
+        const { error } = res.data;
+        dispatch({
+          type: userConstants.ADD_USER_ORDER_FAILURE,
+          payload: { error },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};

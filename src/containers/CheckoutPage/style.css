@@ -80,3 +80,7 @@
     letter-spacing: 1px;
     line-height: 18px;
 }
+.stepCompleted{
+    padding: 0 0 20px 60px;
+    font-size: 12px;
+}
