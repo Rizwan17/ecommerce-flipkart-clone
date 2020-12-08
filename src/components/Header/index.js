@@ -10,7 +10,8 @@ import {
   DropdownMenu,
 } from "../MaterialUI";
 import { useDispatch, useSelector } from "react-redux";
-import { login, signout } from "../../actions";
+import { login, signout, getCartItems, signup as _signup } from "../../actions";
+import Cart from "../UI/Cart";
 
 /**
  * @author
@@ -19,13 +20,38 @@ import { login, signout } from "../../actions";
 
 const Header = (props) => {
   const [loginModal, setLoginModal] = useState(false);
+  const [signup, setSignup] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  // state cart value
+  const cart = useSelector((state) => state.cart);
+
+  const userSignup = () => {
+    const user = { firstName, lastName, email, password };
+    if (
+      firstName === "" ||
+      lastName === "" ||
+      email === "" ||
+      password === ""
+    ) {
+      return;
+    }
+
+    dispatch(_signup(user));
+  };
+
   const userLogin = () => {
-    dispatch(login({ email, password }));
+    if (signup) {
+      userSignup();
+    } else {
+      dispatch(login({ email, password }));
+    }
   };
 
   const logout = () => {
@@ -37,6 +63,10 @@ const Header = (props) => {
       setLoginModal(false);
     }
   }, [auth.authenticate]);
+
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, []);
 
   const renderLoggedInMenu = () => {
     return (
@@ -67,7 +97,13 @@ const Header = (props) => {
     return (
       <DropdownMenu
         menu={
-          <a className="loginButton" onClick={() => setLoginModal(true)}>
+          <a
+            className="loginButton"
+            onClick={() => {
+              setSignup(false);
+              setLoginModal(true);
+            }}
+          >
             Login
           </a>
         }
@@ -89,7 +125,15 @@ const Header = (props) => {
         firstMenu={
           <div className="firstmenu">
             <span>New Customer?</span>
-            <a style={{ color: "#2874f0" }}>Sign Up</a>
+            <a
+              onClick={() => {
+                setLoginModal(true);
+                setSignup(true);
+              }}
+              style={{ color: "#2874f0" }}
+            >
+              Sign Up
+            </a>
           </div>
         }
       />
@@ -107,23 +151,38 @@ const Header = (props) => {
             </div>
             <div className="rightspace">
               <div className="loginInputContainer">
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                )}
+                {signup && (
+                  <MaterialInput
+                    type="text"
+                    label="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                )}
+
                 <MaterialInput
                   type="text"
-                  label="Enter Email/Enter Mobile Number"
+                  label="Email/Mobile Number"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
-
                 <MaterialInput
                   type="password"
-                  label="Enter Password"
+                  label="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   // rightElement={<a href="#">Forgot?</a>}
                 />
-
                 <MaterialButton
-                  title="Login"
+                  title={signup ? "Register" : "Login"}
                   bgColor="#fb641b"
                   textColor="#ffffff"
                   style={{
@@ -201,7 +260,7 @@ const Header = (props) => {
           />
           <div>
             <a href={`/cart`} className="cart">
-              <IoIosCart />
+              <Cart count={Object.keys(cart.cartItems).length} />
               <span style={{ margin: "0 10px" }}>Cart</span>
             </a>
           </div>

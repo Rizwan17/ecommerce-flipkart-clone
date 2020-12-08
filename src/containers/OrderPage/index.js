@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getOrders } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
@@ -38,8 +39,11 @@ const OrderPage = (props) => {
         />
         {user.orders.map((order) => {
           return order.items.map((item) => (
-            <Card style={{ margin: "5px 0" }}>
-              <div className="orderItemContainer">
+            <Card style={{ display: "block", margin: "5px 0" }}>
+              <Link
+                to={`/order_details/${order._id}`}
+                className="orderItemContainer"
+              >
                 <div className="orderImgContainer">
                   <img
                     className="orderImg"
@@ -56,7 +60,7 @@ const OrderPage = (props) => {
                   </div>
                   <div>{order.paymentStatus}</div>
                 </div>
-              </div>
+              </Link>
             </Card>
           ));
         })}

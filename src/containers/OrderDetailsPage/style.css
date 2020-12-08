@@ -1,0 +1,28 @@
+.delAdrContainer{
+    display: flex;
+    box-sizing: border-box;
+}
+.delTitle{
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.delName{
+    font-size: 12px;
+    font-weight: 500;
+}
+.delAddress{
+    font-size: 12px;
+    margin: 10px 0;
+}
+.delPhoneNumber{
+    font-size: 12px;
+    font-weight: 500;
+}
+.delAdrDetails{
+    padding: 20px;
+    border-right: 1px solid #eee;
+}
+.delMoreActionContainer{
+    padding: 20px;
+}
