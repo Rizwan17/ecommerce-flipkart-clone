@@ -7,6 +7,7 @@ const initState = {
   error: null,
   loading: false,
   orderFetching: false,
+  placedOrderId: null,
 };
 
 export default (state = initState, action) => {
@@ -80,6 +81,12 @@ export default (state = initState, action) => {
       };
       break;
     case userConstants.GET_USER_ORDER_DETAILS_FAILURE:
+      break;
+    case userConstants.ADD_USER_ORDER_SUCCESS:
+      state = {
+        ...state,
+        placedOrderId: action.payload.order._id,
+      };
       break;
   }
 
