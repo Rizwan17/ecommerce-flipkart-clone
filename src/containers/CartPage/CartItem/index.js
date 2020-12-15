@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { generatePublicUrl } from "../../../urlConfig";
 import "./style.css";
 
 /**
@@ -27,7 +26,7 @@ const CartItem = (props) => {
     <div className="cartItemContainer">
       <div className="flexRow">
         <div className="cartProImgContainer">
-          <img src={generatePublicUrl(img)} alt={""} />
+          <img src={img} alt={""} />
         </div>
         <div className="cartItemDetails">
           <div>

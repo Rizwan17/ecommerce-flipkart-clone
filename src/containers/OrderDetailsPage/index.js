@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOrder } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
-import { generatePublicUrl } from "../../urlConfig";
 import Price from "../../components/UI/Price";
 
 import "./style.css";
@@ -93,10 +92,7 @@ const OrderDetailsPage = (props) => {
           >
             <div className="flexRow">
               <div className="delItemImgContainer">
-                <img
-                  src={generatePublicUrl(item.productId.productPictures[0].img)}
-                  alt=""
-                />
+                <img src={item.productId.productPictures[0].img} alt="" />
               </div>
               <div style={{ width: "250px" }}>
                 <div className="delItemName">{item.productId.name}</div>
@@ -128,46 +124,6 @@ const OrderDetailsPage = (props) => {
             </div>
           </Card>
         ))}
-
-        {/* <Card style={{ display: "flex", padding: "20px 0" }}>
-          <div className="flexRow">
-            <div className="delItemImgContainer">
-              <img
-                src={generatePublicUrl(
-                  orderDetails.items[0].productId.productPictures[0].img
-                )}
-                alt=""
-              />
-            </div>
-            <div>
-              <div className="delItemName">
-                WROGN Solid Men Round Neck Grey T-Shirt
-              </div>
-              <Price value={233} />
-            </div>
-          </div>
-          <div style={{ padding: "25px 50px" }}>
-            <div className="orderTrack">
-              {orderDetails.orderStatus.map((status) => (
-                <div
-                  className={`orderStatus ${
-                    status.isCompleted ? "active" : ""
-                  }`}
-                >
-                  <div
-                    className={`point ${status.isCompleted ? "active" : ""}`}
-                  ></div>
-                  <div className="orderInfo">
-                    <div className="status">{status.type}</div>
-                    <div className="date">{formatDate(status.date)}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>Delivered on Oct 29</div>
-        </Card>
-       */}
       </div>
     </Layout>
   );

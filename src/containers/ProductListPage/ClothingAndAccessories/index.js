@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductsBySlug } from "../../../actions";
 import Card from "../../../components/UI/Card";
-import { generatePublicUrl } from "../../../urlConfig";
 import { BiRupee } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
@@ -37,7 +36,7 @@ const ClothingAndAccessories = (props) => {
               className="caImgContainer"
               to={`/${product.slug}/${product._id}/p`}
             >
-              <img src={generatePublicUrl(product.productPictures[0].img)} />
+              <img src={product.productPictures[0].img} />
             </Link>
             <div>
               <div className="caProductName">{product.name}</div>

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { getOrders } from "../../actions";
 import Layout from "../../components/Layout";
 import Card from "../../components/UI/Card";
-import { generatePublicUrl } from "../../urlConfig";
 import { BiRupee } from "react-icons/bi";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -47,9 +46,7 @@ const OrderPage = (props) => {
                 <div className="orderImgContainer">
                   <img
                     className="orderImg"
-                    src={generatePublicUrl(
-                      item.productId.productPictures[0].img
-                    )}
+                    src={item.productId.productPictures[0].img}
                   />
                 </div>
                 <div className="orderRow">
